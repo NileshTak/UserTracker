@@ -85,6 +85,12 @@ public class UserTrackerActivity extends AbstractActivity
     TripDAO tripDAO;
     TripDetailsDAO tripDetailsDAO;
     Handler mHandler;
+
+    int tripStarted = 0;
+    int gpsLost = 0;
+    int tripEnded = 0;
+    int returnTripStarted = 0;
+
     ContactsDAO contactsDAO;
     LocationReceiver locationReceiver;
     GoogleMap mMap;
@@ -358,7 +364,10 @@ public class UserTrackerActivity extends AbstractActivity
         }
 
 
-        sendSMS(pref.getString(AppConstants.USER_NAME, "")+ " had started the Trip. You can open User Tracker App to Track users path/location on Map. ");
+        if(tripStarted == 0) {
+            sendSMS(pref.getString(AppConstants.USER_NAME, "")+ " had started the Trip. You can open User Tracker App to Track users path/location on Map. ");
+        }
+
 
         sendNotification(1, tripModel, allContacts, "Trip Started by " + pref.getString(AppConstants.USER_NAME, ""));
     }
@@ -406,9 +415,9 @@ public class UserTrackerActivity extends AbstractActivity
             tripDAO.save(tripModel);
         }
 
-
-        sendSMS(  pref.getString(AppConstants.USER_NAME, "") + " is reached to destination now returning to source");
-
+        if(tripEnded == 0) {
+            sendSMS(pref.getString(AppConstants.USER_NAME, "") + " is reached to destination now returning to source");
+        }
         sendNotification(1, tripModel, allContacts, "Return Trip Started by " + pref.getString(AppConstants.USER_NAME, ""));
     }
 
@@ -433,24 +442,12 @@ public class UserTrackerActivity extends AbstractActivity
 
             if (pref.getBoolean(AppConstants.TRIP_STARTED, false)) {
 
-                try {
+                if(gpsLost == 0) {
 
-                    mHandler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            sendSMS(pref.getString(AppConstants.USER_NAME, "") + " Lost GPS Signal");
-
-                        }
-                    }, 2000);
-                } catch(Exception e) {
+                    sendSMS(pref.getString(AppConstants.USER_NAME, "") + " Lost GPS Signal");
 
                 }
-
-
              }
-
-
         }
     }
 
@@ -518,7 +515,10 @@ public class UserTrackerActivity extends AbstractActivity
 
         if (pref.getBoolean(AppConstants.RETURN_TRIP_STARTED_END,false)) {
             setVolumeMax();
-            sendSMS(pref.getString(AppConstants.USER_NAME, "")+ " your return Trip is overed. You can open User Tracker App to Track users path/location on Map. ");
+
+            if (returnTripStarted == 0) {
+                sendSMS(pref.getString(AppConstants.USER_NAME, "")+ " your return Trip is overed. You can open User Tracker App to Track users path/location on Map. ");
+            }
 
         } else {
             int profile = pref.getInt(AppConstants.END_TRIP_PROFILE, -1);

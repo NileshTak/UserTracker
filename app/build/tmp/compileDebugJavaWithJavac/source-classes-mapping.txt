@@ -3,7 +3,6 @@ com/usertracker/database/TripDAO.java
 com/usertracker/UserTrackerActivity.java
  com.usertracker.UserTrackerActivity
  com.usertracker.UserTrackerActivity$1
- com.usertracker.UserTrackerActivity$2
  com.usertracker.UserTrackerActivity$DataParser
  com.usertracker.UserTrackerActivity$FetchUrl
  com.usertracker.UserTrackerActivity$LocationReceiver
