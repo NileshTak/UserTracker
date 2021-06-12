@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_sound_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4.0">
+
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/tv_vibrate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                android:text="@string/vibrate"/>
+
+            <RadioButton
+                android:id="@+id/tv_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                android:text="@string/normal"/>
+
+            <RadioButton
+                android:id="@+id/tv_silent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                android:text="@string/silent"/>
+
+            <RadioButton
+                android:id="@+id/tv_dnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                android:text="@string/DND"/>
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_icons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_sound_profile"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/btn_select_start_location"
+            android:background="@drawable/button_main_background"
+            android:textColor="#ffffff"
+            android:textAllCaps="false"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Start Location"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <Button
+            android:id="@+id/btn_select_end_location"
+            android:background="@drawable/button_main_background"
+            android:textColor="#ffffff"
+            android:textAllCaps="false"
+            android:text="Destination"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/tv_trip_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_icons"
+        android:hint="Trip Name"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:textSize="14dp"
+        />
+
+    <Button
+        android:id="@+id/btn_pick_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_trip_name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/pick_contacts"
+        android:textAllCaps="false"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_pick_contact"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:weightSum="1.0">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
+
+        <Button
+            android:id="@+id/btn_start_trip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/start_trip"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+</RelativeLayout>
